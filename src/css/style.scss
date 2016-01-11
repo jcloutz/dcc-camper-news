@@ -13,10 +13,13 @@ $colors: (
 * {
   box-sizing: border-box;
 }
-
+body {
+  background-color: #3C3636;
+}
 .grid {
   zoom: 1;
   max-width: 1000px;
+  margin: 0 auto;
 
   &:before,
   &:after {
@@ -37,8 +40,7 @@ $colors: (
 .grid__item {
   width: 100%;
   min-height: 304px;
-  float: left;
-  // border: 1px solid gray;
+  float: none;
 }
 
 .news {
@@ -46,7 +48,7 @@ $colors: (
   font-family: 'Archivo Narrow', Helvetica, arial, sans-serif;
   font-weight: 400;
   color: white;
-  border-bottom: 1px solid #ccc;
+  position: relative;
   &__title {
     margin: 0;
     padding: 0;
@@ -122,11 +124,15 @@ $colors: (
 }
 
 @each $color in $colors {
-  $darkColor: darken(nth($color, 2), 25);
-  $lightColor: lighten(nth($color, 2), 8);
+  $fullColor: nth($color, 2);
+  $darkColor: darken($fullColor, 25);
+  $lightColor: lighten($fullColor, 8);
   .news {
     &.#{nth($color, 1)} {
       background-color: $lightColor;
+      &:hover {
+        background-color: $fullColor;
+      }
     }
     .#{nth($color, 1)} &__title,
     .#{nth($color, 1)} &__meta-date {
@@ -143,8 +149,10 @@ $colors: (
   .grid__sizer {
     width: 50%;
   }
-  .grid-item {
+  .grid__item {
     width: 50%;
+    float: left;
+    height: 304px;
     &--width-2 {
       width: 100%;
     }

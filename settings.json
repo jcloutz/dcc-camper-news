@@ -15,6 +15,7 @@
 		"https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js",
 		"https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js",
 		"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js",
+		"https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js",
 		"https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js",
 		"http://rawgit.com/metafizzy/isotope-packery/master/packery-mode.pkgd.js",
 		"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js",

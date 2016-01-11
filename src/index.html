@@ -1,1 +1,34 @@
-<div id="content"></div>
+<div class="grid">
+  <div class="grid__sizer"></div>
+  <div class="gutter__sizer"></div>
+  <div id="articles"></div>
+</div>
+
+
+<script id="news-item" type="text/x-handlebars-template">
+  <article class="grid__item news {{color}} {{class}}">
+    <h1 class="news__title">{{headline}}</h1>
+    <hr />
+    {{#if metaDescription }}
+    <p class="news__description">{{truncate metaDescription 200}}</p>
+    {{/if}}
+    <div class="news__meta-author-container">
+      <a class="news__meta-author-link" href="http://www.freecodecamp.com/{{author.username}}" >
+        <img class="news__meta-author-avatar" src="{{author.picture}}" alt="{{author.username}} avatar" />
+        <span class="news__meta-author-name">@{{author.username}}</span>
+      </a>
+    </div>
+    <div class="news__story-meta-container">
+      <div class="news__meta">
+        <p class="news__meta-date">{{formatDate timePosted }}</p>
+        <div class="news__meta_upvote-container">
+          <span class="news__meta-upvote-count">
+            <i class="ion-arrow-graph-up-right"></i>
+            {{rank}}
+            <p class="news__meta-upvote-label">upvotes</p>
+          </span>
+        </div>
+      </div>
+    </div>
+  </article>
+</script>
