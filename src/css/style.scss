@@ -27,6 +27,7 @@ body {
   &__base-link {
     text-decoration: none;
     transition: all .5s ease-in-out;
+    padding-left: 15px;
     path {
       fill: #fff;
       fill-rule: nonzero;
@@ -36,7 +37,7 @@ body {
       color: #F37748;
     }
     &:hover path {
-      fill: #F37748;
+      //fill: #F37748;
     }
   }
   &__logo-container {
@@ -61,6 +62,7 @@ body {
   zoom: 1;
   max-width: 1024px;
   margin: 0 auto;
+  box-shadow: 0px 0px 41px #000000;
 
   &:before,
   &:after {
