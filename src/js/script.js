@@ -33,20 +33,43 @@ var colors = [
 var prevColors = [colors.length + 1, colors.length +2, colors.length + 3, colors.length + 4];
 var newsData = data;
 
+var isotopeOptions = {
+  itemSelector: '.grid__item',
+  layoutMode: 'packery',
+  percentPosition: true,
+  packery: {
+    columnWidth: '.grid__sizer',
+    gutter: '.gutter__sizer',
+  }
+};
+
 
 $(document).ready(function() {
   var $articles = $('#articles');
   var template = Handlebars.compile($("#news-item").html());
 
-  var layout = generateLayout(data.length);
-  console.log(layout);
-  for (var i = 0; i < data.length; i++) {
+  $.ajax({
+    url: 'http://www.freecodecamp.com/news/hot',
+    dataType: 'json',
+    cache: false,
+    success: createElements,
+    error: function(xhr, status, error) {
+      console.log(status, err.toString());
+    }
+  })
+  function createElements(data) {
+    var layout = generateLayout(data.length);
 
-    data[i].color = layout[i].color;
-    data[i].class = layout[i].class;
+    for (var i = 0; i < data.length; i++) {
 
-    var html = template(data[i]);
-    $articles.append(html);
+      data[i].color = layout[i].color;
+      data[i].class = layout[i].class;
+
+      var html = template(data[i]);
+      $articles.append(html);
+    }
+
+    $('.grid').isotope(isotopeOptions);
   }
 });
 

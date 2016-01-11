@@ -16,9 +16,50 @@ $colors: (
 body {
   background-color: #3C3636;
 }
+
+.header {
+  padding: 30px 0;
+  //background-color: black;
+  &__container {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  &__base-link {
+    text-decoration: none;
+    transition: all .5s ease-in-out;
+    path {
+      fill: #fff;
+      fill-rule: nonzero;
+      transition: all .5s ease-in-out;
+    }
+    &:hover h1 {
+      color: #F37748;
+    }
+    &:hover path {
+      fill: #F37748;
+    }
+  }
+  &__logo-container {
+    height: 35px;
+    width: 35px;
+    display: inline-block;
+  }
+
+  &__title {
+    font-weight: 300;
+    display: inline-block;
+    margin: 0 0 0 6px;
+    line-height: 36px;
+    vertical-align: top;
+    color: white;
+    font-size: 24px;
+    font-family: 'archivo narrow';
+    transition: all .5s ease-in-out;
+  }
+}
 .grid {
   zoom: 1;
-  max-width: 1000px;
+  max-width: 1024px;
   margin: 0 auto;
 
   &:before,
@@ -49,15 +90,22 @@ body {
   font-weight: 400;
   color: white;
   position: relative;
+  transition: all .5s ease-in-out;
+  &__url {
+    text-decoration: none;
+    color: white;
+  }
   &__title {
     margin: 0;
     padding: 0;
     font-weight: 800;
     font-size: 25px;
+    transition: all .5s ease-in-out;
   }
   hr {
     border-top: none;
     border-bottom: 1px solid white;
+    transition: all .5s ease-in-out;
   }
 
   &__meta-author-container {
@@ -102,6 +150,8 @@ body {
   &__meta-author-link {
     position: relative;
     float: left;
+    color: white;
+    transition: all .5s ease-in-out;
   }
   &__meta-author-avatar {
     width: 35px;
@@ -119,7 +169,6 @@ body {
     line-height: 35px;
     font-size: 19px;
     font-weight: 400;
-    color: white;
   }
 }
 
@@ -131,7 +180,7 @@ body {
     &.#{nth($color, 1)} {
       background-color: $lightColor;
       &:hover {
-        background-color: $fullColor;
+        background-color: lighten($fullColor, 3);
       }
     }
     .#{nth($color, 1)} &__title,
@@ -140,6 +189,16 @@ body {
     }
     &.#{nth($color, 1)} hr {
       border-color: $darkColor;
+    }
+
+    .#{nth($color, 1)} &__meta-author-link:hover {
+      color: $darkColor;
+    }
+
+    .#{nth($color, 1)} &__url:hover .news__title,
+    .#{nth($color, 1)} &__url:hover hr {
+      color: lighten($darkColor, 4);
+      border-color: lighten($darkColor, 4);
     }
 
   } // end news
@@ -161,3 +220,23 @@ body {
     }
   }
 }
+
+// @media screen and (min-width: 1200px) {
+//   .grid {
+//     max-width: 100%;
+//   }
+//   .grid__sizer {
+//     width: 25%;
+//   }
+//   .grid__item {
+//     width: 25%;
+//     float: left;
+//     height: 304px;
+//     &--width-2 {
+//       width: 75%;
+//     }
+//     &--height-2 {
+//       height: 608px;
+//     }
+//   }
+// }
