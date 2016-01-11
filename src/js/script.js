@@ -1,112 +1,152 @@
 "use strict";
-
-var NewsItem = React.createClass({
-  formatDate: function(timestamp) {
-    return moment(timestamp).format('MMMM Do, YYYY');
-  },
-  truncateString: function(str, len) {
-    var re = /(\.\ |\ )/g,
-        match,
-        flag = true,
-        index = 0;
+Handlebars.registerHelper('truncate', function(str, len) {
+  var re = /(\.\ |\ )/g,
+      match,
+      flag = true,
+      index = 0;
 
 
-    while((match = re.exec(str)) && flag === true) {
-      if (match.index <= len) {
-        index = match.index;
-      } else {
-        flag = false;
-      }
-    }
-
-    return str.substr(0, index) + '...';
-  },
-  render: function() {
-    var height = Math.random() > .78  ? ' grid__item--height-2' : '';
-    var width = Math.random() > .9 && height === '' ? ' grid__item--width-2' : '';
-
-    var description = this.props.data.metaDescription;
-
-    return (
-      <article className={'grid__item news blue' + width + height}>
-        <h1 className="news__title">{this.props.data.headline}</h1>
-        <hr />
-        <p className="news__description">{ description.length > 0 ? this.truncateString(this.props.data.metaDescription, 200) : ''}</p>
-        <div className="news__meta-author-container">
-          <a className="news__meta-author-link" href={'http://www.freecodecamp.com/' + this.props.data.author.username} >
-            <img className="news__meta-author-avatar" src={this.props.data.author.picture} alt={this.props.data.author.username + ' avatar'} />
-            <span className="news__meta-author-name">{'@'+this.props.data.author.username}</span>
-          </a>
-        </div>
-        <div className="news__story-meta-container">
-          <div className="news__meta">
-            <p className="news__meta-date">{this.formatDate(this.props.data.timePosted)}</p>
-            <div className="news__meta_upvote-container">
-              <span className="news__meta-upvote-count">
-                <i className="ion-arrow-graph-up-right"></i>
-                {this.props.data.rank}
-                <p className="news__meta-upvote-label">upvotes</p>
-              </span>
-            </div>
-          </div>
-        </div>
-      </article>
-    );
-  }
-});
-
-var News = React.createClass({
-  getInitialState: function() {
-    return {
-      data: [],
-      iso: null,
-    }
-  },
-  fetchData: function() {
-    this.setState({data: data});
-  },
-  componentDidUpdate: function() {
-    if(this.state.iso) {
-        this.state.iso.reloadItems();
-        this.state.iso.arrange();
-    }
-  },
-  componentDidMount: function() {
-    this.fetchData();
-    if(!this.state.iso) {
-      this.setState({
-        iso: new Isotope(ReactDOM.findDOMNode(this.refs.isotopeContainer), {
-          itemSelector: '.grid__item',
-          layoutMode: 'packery',
-          percentPosition: true,
-          packery: {
-            columnWidth: '.grid__sizer',
-            gutter: '.gutter__sizer',
-          }
-        }),
-      });
+  while((match = re.exec(str)) && flag === true) {
+    if (match.index <= len) {
+      index = match.index;
     } else {
-        this.state.iso.reloadItems();
+      flag = false;
     }
-  },
-  render: function() {
-    var newsItems = this.state.data.map(function(news) {
-      return (
-        <NewsItem key={news.id} data={news} />
-      );
-    });
+  }
 
-    return (
-      <div className="grid" ref="isotopeContainer">
-        <div className="grid__sizer"></div>
-        <div className="gutter__sizer"></div>
-        {newsItems}
-      </div>
-    );
+  return str.substr(0, index) + '...';
+});
+
+Handlebars.registerHelper('formatDate', function(timestamp) {
+  return moment(timestamp).format('MMMM Do, YYYY');
+});
+
+var colors = [
+  'red',    // '#F0544F', // red
+  'blue',   // '#2BA9E0', // blue
+  'orange', // '#F37748', // orange
+  'yellow', // '#FFBC42', // yellow
+  'pink',   // '#DE398B', // pink
+  'purple', // '#8572C9', // purple
+  'green',  // '#84DCC6' // green
+];
+var prevColors = [colors.length + 1, colors.length +2, colors.length + 3, colors.length + 4];
+var newsData = data;
+
+var isotopeOptions = {
+  itemSelector: '.grid__item',
+  layoutMode: 'packery',
+  percentPosition: true,
+  packery: {
+    columnWidth: '.grid__sizer',
+    gutter: '.gutter__sizer',
+  }
+};
+
+
+$(document).ready(function() {
+  var $articles = $('#articles');
+  var template = Handlebars.compile($("#news-item").html());
+
+  $.ajax({
+    url: 'http://www.freecodecamp.com/news/hot',
+    dataType: 'json',
+    cache: false,
+    success: createElements,
+    error: function(xhr, status, error) {
+      console.log(status, err.toString());
+    }
+  })
+  function createElements(data) {
+    var layout = generateLayout(data.length);
+
+    for (var i = 0; i < data.length; i++) {
+
+      data[i].color = layout[i].color;
+      data[i].class = layout[i].class;
+
+      var html = template(data[i]);
+      $articles.append(html);
+    }
+
+    $('.grid').isotope(isotopeOptions);
   }
 });
 
-ReactDOM.render(
-  <News/>,
-  document.getElementById('content')
-);
+
+// double height block every 3-9 blocks,  odd numbers only, no more than 2
+// single 2 wide block every 8-12 items which resets counters
+
+function generateLayout(size) {
+  var nextDoubleWideBlock = 0,
+      nextDoubleHeightBlock,
+      dhMultiple,
+      dwMultiple,
+      layout = [];
+
+  for (var i = 0; i < size; i++) {
+    var cls = '';
+    if(i === nextDoubleWideBlock) { // double wide block
+      cls = 'grid__item--width-2';
+      dwMultiple = getEvenNum(6, 12);
+
+      nextDoubleWideBlock = i + dwMultiple;
+      nextDoubleHeightBlock = i + getOddNum(1,3);
+    } else if (i === nextDoubleHeightBlock) { // double height block
+      cls = 'grid__item--height-2';
+      nextDoubleHeightBlock = i + getEvenNum(2, nextDoubleWideBlock - i);
+    }
+
+    layout[i] = {
+      class: cls,
+      color: getColor()
+    }
+  }
+
+  return layout;
+}
+
+function getColor() {
+  var colorIndex = 0,
+      newColor = false;
+
+  do {
+    colorIndex = Math.floor(Math.random() * colors.length);
+    newColor = prevColors.indexOf(colorIndex) === -1 ? true : false;
+  } while ( newColor === false);
+
+  prevColors.push(colorIndex);
+  prevColors.shift();
+
+  return colors[colorIndex];
+}
+
+function getOddNum(min, max) {
+  var num = Math.floor(Math.random() * (max-min)) + min;
+
+  if ((num%2) === 1) {
+    // is even
+    if ((num%2) === 1 && num === max) {
+      num -= 1;
+    } else {
+      num += 1;
+    }
+  }
+
+  return num;
+}
+
+function getEvenNum(min, max) {
+  var num = Math.floor(Math.random() * (max-min)) + min;
+
+  if ((num%2) !== 0) {
+    // is odd
+    if ((num%2) !== 0 && num === max) {
+      num -= 1;
+    } else {
+      num += 1;
+    }
+  }
+
+  return num;
+}
