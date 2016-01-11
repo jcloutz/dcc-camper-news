@@ -8,11 +8,16 @@
 	},
 	"css": [
 		"https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css",
-		"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.0/animate.min.css"
+		"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.0/animate.min.css",
+		"https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
 	],
 	"javascript": [
 		"https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js",
 		"https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js",
-		"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"
+		"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js",
+		"https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js",
+		"http://rawgit.com/metafizzy/isotope-packery/master/packery-mode.pkgd.js",
+		"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js",
+		"/js/data.js"
 	]
 }
