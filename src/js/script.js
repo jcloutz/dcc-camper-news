@@ -45,6 +45,9 @@ var isotopeOptions = {
 $(document).ready(function() {
   var $articles = $('#articles');
   var template = Handlebars.compile($("#news-item").html());
+  var $window = $(window);
+  var isotopeInitialized = false;
+  var $grid = $('.grid');
 
   $.ajax({
     url: 'http://www.freecodecamp.com/news/hot',
@@ -55,6 +58,19 @@ $(document).ready(function() {
       console.log(status, err.toString());
     }
   });
+
+  function initializeIsotope() {
+    var width = $window.width();
+    if (width >= 768 && isotopeInitialized === false) {
+      $grid.isotope(isotopeOptions);
+      isotopeInitialized = true;
+      console.log('Isotope Initialized.');
+    } else if (width < 768 && isotopeInitialized === true) {
+      $grid.isotope('destroy');
+      isotopeInitialized = false;
+      console.log('Isotope Destroyed');
+    }
+  }
 
   function createElements(data) {
     var high = Math.max.apply(Math, data.map(function(v) {
@@ -68,7 +84,7 @@ $(document).ready(function() {
       if(data[i].rank >= (divider*2)) {
         // top 1/3
         data[i].class = "grid__item--width-2";
-      } else if (data[i].rank >= divider && ([true, true, true, false][Math.floor(Math.random() * 4)])) {
+      } else if (data[i].rank >= divider) {
         // middle 1/3
         data[i].class = "grid__item--height-2";
       } else {
@@ -82,8 +98,11 @@ $(document).ready(function() {
       $articles.append(html);
     }
 
-    $('.grid').isotope(isotopeOptions);
-  }
+    initializeIsotope();
+    $window.resize(function() {
+      initializeIsotope();
+    })
+  } // end crete elements
 });
 
 var prevColors = [colors.length + 1, colors.length +2, colors.length + 3, colors.length + 4];

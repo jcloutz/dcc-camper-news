@@ -84,6 +84,7 @@ body {
   width: 100%;
   min-height: 304px;
   float: none;
+  overflow: hidden;
 }
 
 .news {
@@ -96,12 +97,22 @@ body {
   &__url {
     text-decoration: none;
     color: white;
+		max-width: 100%;
+		display: block;
+		// word-break: break-all;
+		// word-wrap: break-word;
+		hyphens: all;
+		font-size: 16px;
+		font-size: 14px;
   }
   &__title {
     margin: 0;
     padding: 0;
     font-weight: 800;
     font-size: 25px;
+		font-size: 20px;
+		//word-break: break-all;
+		hyphens: auto;
     transition: all .5s ease-in-out;
   }
   hr {
@@ -221,24 +232,13 @@ body {
       height: 608px;
     }
   }
-}
 
-// @media screen and (min-width: 1200px) {
-//   .grid {
-//     max-width: 100%;
-//   }
-//   .grid__sizer {
-//     width: 25%;
-//   }
-//   .grid__item {
-//     width: 25%;
-//     float: left;
-//     height: 304px;
-//     &--width-2 {
-//       width: 75%;
-//     }
-//     &--height-2 {
-//       height: 608px;
-//     }
-//   }
-// }
+	.news {
+		&__url {
+			font-size: 16px;
+		}
+		&__title {
+			font-size: 25px;
+		}
+	}
+}
