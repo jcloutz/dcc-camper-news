@@ -68,7 +68,7 @@ $(document).ready(function() {
       if(data[i].rank >= (divider*2)) {
         // top 1/3
         data[i].class = "grid__item--width-2";
-      } else if (data[i].rank >= divider && ([true, true, false][Math.floor(Math.random() * 3)])) {
+      } else if (data[i].rank >= divider && ([true, true, true, false][Math.floor(Math.random() * 4)])) {
         // middle 1/3
         data[i].class = "grid__item--height-2";
       } else {

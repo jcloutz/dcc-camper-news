@@ -26,7 +26,7 @@
       <h1 class="news__title">{{headline}}</h1>
       {{#if metaDescription }}
       <hr />
-      <p class="news__description">{{metaDescription}}</p>
+      <p class="news__description">{{truncate metaDescription 200}}</p>
       {{/if}}
     </a>
     <div class="news__meta-author-container">
