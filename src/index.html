@@ -12,7 +12,6 @@
       <h1 class="header__title">Camper News</h1>
     </a>
   </div>
-
 </header>
 
 <div class="grid">
@@ -21,14 +20,13 @@
   <div id="articles"></div>
 </div>
 
-
 <script id="news-item" type="text/x-handlebars-template">
   <article class="grid__item news {{color}} {{class}}" data-url="{{link}}">
     <a href="{{link}}" class="news__url" target="_blank">
       <h1 class="news__title">{{headline}}</h1>
       {{#if metaDescription }}
       <hr />
-      <p class="news__description">{{truncate metaDescription 200}}</p>
+      <p class="news__description">{{metaDescription}}</p>
       {{/if}}
     </a>
     <div class="news__meta-author-container">

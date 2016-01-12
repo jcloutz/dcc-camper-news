@@ -30,7 +30,6 @@ var colors = [
   'purple', // '#8572C9', // purple
   'green',  // '#84DCC6' // green
 ];
-var prevColors = [colors.length + 1, colors.length +2, colors.length + 3, colors.length + 4];
 
 var isotopeOptions = {
   itemSelector: '.grid__item',
@@ -55,14 +54,29 @@ $(document).ready(function() {
     error: function(xhr, status, error) {
       console.log(status, err.toString());
     }
-  })
+  });
+
   function createElements(data) {
-    var layout = generateLayout(data.length);
+    var high = Math.max.apply(Math, data.map(function(v) {
+          return v.rank;
+      }
+    ));
+    var divider = Math.floor(high/3);
+		console.log(divider)
 
     for (var i = 0; i < data.length; i++) {
-
-      data[i].color = layout[i].color;
-      data[i].class = layout[i].class;
+      if(data[i].rank >= (divider*2)) {
+        // top 1/3
+        data[i].class = "grid__item--width-2";
+      } else if (data[i].rank >= divider && ([true, true, false][Math.floor(Math.random() * 3)])) {
+        // middle 1/3
+        data[i].class = "grid__item--height-2";
+      } else {
+        data[i].class = '';
+      }
+      data[i].color = getColor();
+      data[i].animationDelay = i * .1;
+      //data[i].class = layout[i].class;
 
       var html = template(data[i]);
       $articles.append(html);
@@ -72,38 +86,7 @@ $(document).ready(function() {
   }
 });
 
-
-// double height block every 3-9 blocks,  odd numbers only, no more than 2
-// single 2 wide block every 8-12 items which resets counters
-
-function generateLayout(size) {
-  var nextDoubleWideBlock = 0,
-      nextDoubleHeightBlock,
-      dhMultiple,
-      dwMultiple,
-      layout = [];
-
-  for (var i = 0; i < size; i++) {
-    var cls = '';
-    if(i === nextDoubleWideBlock) { // double wide block
-      cls = 'grid__item--width-2';
-      dwMultiple = getEvenNum(6, 12);
-
-      nextDoubleWideBlock = i + dwMultiple;
-      nextDoubleHeightBlock = i + getOddNum(1,3);
-    } else if (i === nextDoubleHeightBlock) { // double height block
-      cls = 'grid__item--height-2';
-      nextDoubleHeightBlock = i + getEvenNum(2, nextDoubleWideBlock - i);
-    }
-
-    layout[i] = {
-      class: cls,
-      color: getColor()
-    }
-  }
-
-  return layout;
-}
+var prevColors = [colors.length + 1, colors.length +2, colors.length + 3, colors.length + 4];
 
 function getColor() {
   var colorIndex = 0,
