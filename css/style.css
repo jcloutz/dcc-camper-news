@@ -457,30 +457,49 @@ body {
   border-color: #36bf9d;
 }
 
+/* line 220, stdin */
+.footer__copyright {
+  text-align: center;
+  color: #929292;
+  font-size: 13px;
+}
+
+/* line 224, stdin */
+.footer__copyright a {
+  color: #DEDEDE;
+  text-decoration: none;
+  transition: all .5s ease-in-out;
+}
+
+/* line 228, stdin */
+.footer__copyright a:hover {
+  color: #F37748;
+}
+
 @media screen and (min-width: 760px) {
-  /* line 220, stdin */
+  /* line 236, stdin */
   .grid__sizer {
     width: 50%;
   }
-  /* line 223, stdin */
+  /* line 239, stdin */
   .grid__item {
     width: 50%;
     float: left;
     height: 304px;
   }
-  /* line 227, stdin */
+  /* line 243, stdin */
   .grid__item--width-2 {
     width: 100%;
   }
-  /* line 230, stdin */
+  /* line 246, stdin */
   .grid__item--height-2 {
     height: 608px;
   }
-  /* line 236, stdin */
+  /* line 252, stdin */
   .news__url {
     font-size: 16px;
   }
-  /* line 239, stdin */
+  /* line 255, stdin */
   .news__title {
     font-size: 25px;
   }
