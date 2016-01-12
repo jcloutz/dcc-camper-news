@@ -63,7 +63,8 @@ body {
   max-width: 1024px;
   margin: 0 auto;
   box-shadow: 0px 0px 41px #000000;
-
+  background-color: #252525;
+  margin-bottom: 100px;
   &:before,
   &:after {
     content: ' ';
@@ -216,6 +217,22 @@ body {
 
   } // end news
 } // end each loop
+
+.footer {
+  &__copyright {
+    text-align: center;
+    color: #929292;
+    font-size: 13px;
+    a {
+      color: #DEDEDE;
+      text-decoration: none;
+      transition: all .5s ease-in-out;
+      &:hover {
+        color: #F37748;
+      }
+    }
+  }
+}
 
 @media screen and (min-width: 760px) {
   .grid__sizer {
