@@ -65,30 +65,32 @@ body {
   max-width: 1024px;
   margin: 0 auto;
   box-shadow: 0px 0px 41px #000000;
+  background-color: #252525;
+  margin-bottom: 100px;
 }
 
-/* line 67, stdin */
+/* line 68, stdin */
 .grid:before, .grid:after {
   content: ' ';
   display: table;
 }
 
-/* line 72, stdin */
+/* line 73, stdin */
 .grid:after {
   clear: both;
 }
 
-/* line 77, stdin */
+/* line 78, stdin */
 .grid__sizer {
   width: 100%;
 }
 
-/* line 80, stdin */
+/* line 81, stdin */
 .gutter__sizer {
   width: 0;
 }
 
-/* line 83, stdin */
+/* line 84, stdin */
 .grid__item {
   width: 100%;
   min-height: 304px;
@@ -96,7 +98,7 @@ body {
   overflow: hidden;
 }
 
-/* line 90, stdin */
+/* line 91, stdin */
 .news {
   padding: 40px 40px 105px 40px;
   font-family: 'Archivo Narrow', Helvetica, arial, sans-serif;
@@ -106,7 +108,7 @@ body {
   transition: all .5s ease-in-out;
 }
 
-/* line 97, stdin */
+/* line 98, stdin */
 .news__url {
   text-decoration: none;
   color: white;
@@ -120,7 +122,7 @@ body {
   font-size: 14px;
 }
 
-/* line 108, stdin */
+/* line 109, stdin */
 .news__title {
   margin: 0;
   padding: 0;
@@ -134,14 +136,14 @@ body {
   transition: all .5s ease-in-out;
 }
 
-/* line 118, stdin */
+/* line 119, stdin */
 .news hr {
   border-top: none;
   border-bottom: 1px solid white;
   transition: all .5s ease-in-out;
 }
 
-/* line 124, stdin */
+/* line 125, stdin */
 .news__meta-author-container {
   position: absolute;
   bottom: 0;
@@ -149,7 +151,7 @@ body {
   padding: 0 35px 35px;
 }
 
-/* line 130, stdin */
+/* line 131, stdin */
 .news__story-meta-container {
   position: absolute;
   bottom: 0;
@@ -157,23 +159,23 @@ body {
   padding: 0 35px 35px 0;
 }
 
-/* line 136, stdin */
+/* line 137, stdin */
 .news__meta {
   float: right;
 }
 
-/* line 139, stdin */
+/* line 140, stdin */
 .news__meta-date {
   font-size: 16px;
   margin: 0 0 5px 0;
 }
 
-/* line 143, stdin */
+/* line 144, stdin */
 .news__meta_upvote-container {
   float: right;
 }
 
-/* line 146, stdin */
+/* line 147, stdin */
 .news__meta-upvote-count {
   font-size: 26px;
   display: inline-block;
@@ -181,13 +183,13 @@ body {
   margin: 0;
 }
 
-/* line 151, stdin */
+/* line 152, stdin */
 .news__meta-upvote-count i {
   display: inline-block;
   margin-right: 10px;
 }
 
-/* line 156, stdin */
+/* line 157, stdin */
 .news__meta-upvote-label {
   font-size: 14px;
   font-weight: 400;
@@ -195,7 +197,7 @@ body {
   text-align: center;
 }
 
-/* line 163, stdin */
+/* line 164, stdin */
 .news__meta-author-link {
   position: relative;
   float: left;
@@ -203,7 +205,7 @@ body {
   transition: all .5s ease-in-out;
 }
 
-/* line 169, stdin */
+/* line 170, stdin */
 .news__meta-author-avatar {
   width: 35px;
   height: auto;
@@ -213,7 +215,7 @@ body {
   top: 0;
 }
 
-/* line 177, stdin */
+/* line 178, stdin */
 .news__meta-author-name {
   margin-left: 35px;
   padding: 0 0 0 10px;
@@ -224,231 +226,231 @@ body {
   font-weight: 400;
 }
 
-/* line 193, stdin */
+/* line 194, stdin */
 .news.red {
   background-color: #f37975;
 }
 
-/* line 195, stdin */
+/* line 196, stdin */
 .news.red:hover {
   background-color: #f1625d;
 }
 
-/* line 199, stdin */
+/* line 200, stdin */
 .red .news__title,
 .red .news__meta-date {
   color: #b0140f;
 }
 
-/* line 202, stdin */
+/* line 203, stdin */
 .news.red hr {
   border-color: #b0140f;
 }
 
-/* line 206, stdin */
+/* line 207, stdin */
 .red .news__meta-author-link:hover {
   color: #b0140f;
 }
 
-/* line 210, stdin */
+/* line 211, stdin */
 .red .news__url:hover .news__title,
 .red .news__url:hover hr {
   color: #c31611;
   border-color: #c31611;
 }
 
-/* line 193, stdin */
+/* line 194, stdin */
 .news.blue {
   background-color: #4fb7e5;
 }
 
-/* line 195, stdin */
+/* line 196, stdin */
 .news.blue:hover {
   background-color: #38aee2;
 }
 
-/* line 199, stdin */
+/* line 200, stdin */
 .blue .news__title,
 .blue .news__meta-date {
   color: #125a7a;
 }
 
-/* line 202, stdin */
+/* line 203, stdin */
 .news.blue hr {
   border-color: #125a7a;
 }
 
-/* line 206, stdin */
+/* line 207, stdin */
 .blue .news__meta-author-link:hover {
   color: #125a7a;
 }
 
-/* line 210, stdin */
+/* line 211, stdin */
 .blue .news__url:hover .news__title,
 .blue .news__url:hover hr {
   color: #14678c;
   border-color: #14678c;
 }
 
-/* line 193, stdin */
+/* line 194, stdin */
 .news.orange {
   background-color: #f6936e;
 }
 
-/* line 195, stdin */
+/* line 196, stdin */
 .news.orange:hover {
   background-color: #f48256;
 }
 
-/* line 199, stdin */
+/* line 200, stdin */
 .orange .news__title,
 .orange .news__meta-date {
   color: #b0390c;
 }
 
-/* line 202, stdin */
+/* line 203, stdin */
 .news.orange hr {
   border-color: #b0390c;
 }
 
-/* line 206, stdin */
+/* line 207, stdin */
 .orange .news__meta-author-link:hover {
   color: #b0390c;
 }
 
-/* line 210, stdin */
+/* line 211, stdin */
 .orange .news__url:hover .news__title,
 .orange .news__url:hover hr {
   color: #c33f0d;
   border-color: #c33f0d;
 }
 
-/* line 193, stdin */
+/* line 194, stdin */
 .news.yellow {
   background-color: #ffca6b;
 }
 
-/* line 195, stdin */
+/* line 196, stdin */
 .news.yellow:hover {
   background-color: #ffc151;
 }
 
-/* line 199, stdin */
+/* line 200, stdin */
 .yellow .news__title,
 .yellow .news__meta-date {
   color: #c27d00;
 }
 
-/* line 202, stdin */
+/* line 203, stdin */
 .news.yellow hr {
   border-color: #c27d00;
 }
 
-/* line 206, stdin */
+/* line 207, stdin */
 .yellow .news__meta-author-link:hover {
   color: #c27d00;
 }
 
-/* line 210, stdin */
+/* line 211, stdin */
 .yellow .news__url:hover .news__title,
 .yellow .news__url:hover hr {
   color: #d68a00;
   border-color: #d68a00;
 }
 
-/* line 193, stdin */
+/* line 194, stdin */
 .news.pink {
   background-color: #e45c9f;
 }
 
-/* line 195, stdin */
+/* line 196, stdin */
 .news.pink:hover {
   background-color: #e04693;
 }
 
-/* line 199, stdin */
+/* line 200, stdin */
 .pink .news__title,
 .pink .news__meta-date {
   color: #82164b;
 }
 
-/* line 202, stdin */
+/* line 203, stdin */
 .news.pink hr {
   border-color: #82164b;
 }
 
-/* line 206, stdin */
+/* line 207, stdin */
 .pink .news__meta-author-link:hover {
   color: #82164b;
 }
 
-/* line 210, stdin */
+/* line 211, stdin */
 .pink .news__url:hover .news__title,
 .pink .news__url:hover hr {
   color: #931956;
   border-color: #931956;
 }
 
-/* line 193, stdin */
+/* line 194, stdin */
 .news.purple {
   background-color: #9f90d4;
 }
 
-/* line 195, stdin */
+/* line 196, stdin */
 .news.purple:hover {
   background-color: #8f7dcd;
 }
 
-/* line 199, stdin */
+/* line 200, stdin */
 .purple .news__title,
 .purple .news__meta-date {
   color: #463488;
 }
 
-/* line 202, stdin */
+/* line 203, stdin */
 .news.purple hr {
   border-color: #463488;
 }
 
-/* line 206, stdin */
+/* line 207, stdin */
 .purple .news__meta-author-link:hover {
   color: #463488;
 }
 
-/* line 210, stdin */
+/* line 211, stdin */
 .purple .news__url:hover .news__title,
 .purple .news__url:hover hr {
   color: #4e3a96;
   border-color: #4e3a96;
 }
 
-/* line 193, stdin */
+/* line 194, stdin */
 .news.green {
   background-color: #a4e5d5;
 }
 
-/* line 195, stdin */
+/* line 196, stdin */
 .news.green:hover {
   background-color: #90dfcc;
 }
 
-/* line 199, stdin */
+/* line 200, stdin */
 .green .news__title,
 .green .news__meta-date {
   color: #32af90;
 }
 
-/* line 202, stdin */
+/* line 203, stdin */
 .news.green hr {
   border-color: #32af90;
 }
 
-/* line 206, stdin */
+/* line 207, stdin */
 .green .news__meta-author-link:hover {
   color: #32af90;
 }
 
-/* line 210, stdin */
+/* line 211, stdin */
 .green .news__url:hover .news__title,
 .green .news__url:hover hr {
   color: #36bf9d;
@@ -456,29 +458,29 @@ body {
 }
 
 @media screen and (min-width: 760px) {
-  /* line 219, stdin */
+  /* line 220, stdin */
   .grid__sizer {
     width: 50%;
   }
-  /* line 222, stdin */
+  /* line 223, stdin */
   .grid__item {
     width: 50%;
     float: left;
     height: 304px;
   }
-  /* line 226, stdin */
+  /* line 227, stdin */
   .grid__item--width-2 {
     width: 100%;
   }
-  /* line 229, stdin */
+  /* line 230, stdin */
   .grid__item--height-2 {
     height: 608px;
   }
-  /* line 235, stdin */
+  /* line 236, stdin */
   .news__url {
     font-size: 16px;
   }
-  /* line 238, stdin */
+  /* line 239, stdin */
   .news__title {
     font-size: 25px;
   }

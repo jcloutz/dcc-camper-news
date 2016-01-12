@@ -11,6 +11,7 @@ var gulp = require('gulp'),
     replace = require('gulp-replace'),
     reload = browserSync.reload,
     rename = require('gulp-rename'),
+    run = require('gulp-run'),
     fs = require('fs');
 
 var paths = {
@@ -88,4 +89,9 @@ gulp.task('default', ['html', 'css', 'scripts'], function() {
     gulp.watch(paths.source.css + "*.scss", ['css']);
     gulp.watch(paths.source.js + '*.js', ['scripts']);
 
+});
+
+gulp.task('deploy', function() {
+  run('git push origin :gh-pages').exec();
+  run('git subtree push --prefix output origin gh-pages').exec();
 });
