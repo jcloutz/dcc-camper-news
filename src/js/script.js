@@ -31,7 +31,6 @@ var colors = [
   'green',  // '#84DCC6' // green
 ];
 var prevColors = [colors.length + 1, colors.length +2, colors.length + 3, colors.length + 4];
-var newsData = data;
 
 var isotopeOptions = {
   itemSelector: '.grid__item',
