@@ -1,1 +1,244 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700);
+
+$colors: (
+  ('red', #F0544F),
+  ('blue', #2BA9E0),
+  ('orange', #F37748),
+  ('yellow', #FFBC42),
+  ('pink', #DE398B),
+  ('purple', #8572C9),
+  ('green', #84DCC6)
+);
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #3C3636;
+}
+
+.header {
+  padding: 30px 0;
+  //background-color: black;
+  &__container {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  &__base-link {
+    text-decoration: none;
+    transition: all .5s ease-in-out;
+    padding-left: 15px;
+    path {
+      fill: #fff;
+      fill-rule: nonzero;
+      transition: all .5s ease-in-out;
+    }
+    &:hover h1 {
+      color: #F37748;
+    }
+    &:hover path {
+      //fill: #F37748;
+    }
+  }
+  &__logo-container {
+    height: 35px;
+    width: 35px;
+    display: inline-block;
+  }
+
+  &__title {
+    font-weight: 300;
+    display: inline-block;
+    margin: 0 0 0 6px;
+    line-height: 36px;
+    vertical-align: top;
+    color: white;
+    font-size: 24px;
+    font-family: 'archivo narrow';
+    transition: all .5s ease-in-out;
+  }
+}
+.grid {
+  zoom: 1;
+  max-width: 1024px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 41px #000000;
+
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.grid__sizer {
+  width: 100%;
+}
+.gutter__sizer {
+  width: 0;
+}
+.grid__item {
+  width: 100%;
+  min-height: 304px;
+  float: none;
+  overflow: hidden;
+}
+
+.news {
+  padding: 40px 40px 105px 40px;
+  font-family: 'Archivo Narrow', Helvetica, arial, sans-serif;
+  font-weight: 400;
+  color: white;
+  position: relative;
+  transition: all .5s ease-in-out;
+  &__url {
+    text-decoration: none;
+    color: white;
+		max-width: 100%;
+		display: block;
+		// word-break: break-all;
+		// word-wrap: break-word;
+		hyphens: all;
+		font-size: 16px;
+		font-size: 14px;
+  }
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-weight: 800;
+    font-size: 25px;
+		font-size: 20px;
+		//word-break: break-all;
+		hyphens: auto;
+    transition: all .5s ease-in-out;
+  }
+  hr {
+    border-top: none;
+    border-bottom: 1px solid white;
+    transition: all .5s ease-in-out;
+  }
+
+  &__meta-author-container {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    padding: 0 35px 35px;
+  }
+  &__story-meta-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 35px 35px 0;
+  }
+  &__meta {
+    float: right;
+  }
+  &__meta-date {
+    font-size: 16px;
+    margin: 0 0 5px 0;
+  }
+  &__meta_upvote-container {
+    float: right;
+  }
+  &__meta-upvote-count {
+    font-size: 26px;
+    display: inline-block;;
+    font-weight: 700;
+    margin: 0;
+    i {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+  &__meta-upvote-label {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__meta-author-link {
+    position: relative;
+    float: left;
+    color: white;
+    transition: all .5s ease-in-out;
+  }
+  &__meta-author-avatar {
+    width: 35px;
+    height: auto;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  &__meta-author-name {
+    margin-left: 35px;
+    padding: 0 0 0 10px;
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    font-size: 19px;
+    font-weight: 400;
+  }
+}
+
+@each $color in $colors {
+  $fullColor: nth($color, 2);
+  $darkColor: darken($fullColor, 25);
+  $lightColor: lighten($fullColor, 8);
+  .news {
+    &.#{nth($color, 1)} {
+      background-color: $lightColor;
+      &:hover {
+        background-color: lighten($fullColor, 3);
+      }
+    }
+    .#{nth($color, 1)} &__title,
+    .#{nth($color, 1)} &__meta-date {
+      color: $darkColor;
+    }
+    &.#{nth($color, 1)} hr {
+      border-color: $darkColor;
+    }
+
+    .#{nth($color, 1)} &__meta-author-link:hover {
+      color: $darkColor;
+    }
+
+    .#{nth($color, 1)} &__url:hover .news__title,
+    .#{nth($color, 1)} &__url:hover hr {
+      color: lighten($darkColor, 4);
+      border-color: lighten($darkColor, 4);
+    }
+
+  } // end news
+} // end each loop
+
+@media screen and (min-width: 760px) {
+  .grid__sizer {
+    width: 50%;
+  }
+  .grid__item {
+    width: 50%;
+    float: left;
+    height: 304px;
+    &--width-2 {
+      width: 100%;
+    }
+    &--height-2 {
+      height: 608px;
+    }
+  }
+
+	.news {
+		&__url {
+			font-size: 16px;
+		}
+		&__title {
+			font-size: 25px;
+		}
+	}
+}

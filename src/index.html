@@ -1,1 +1,54 @@
-<div id="content"></div>
+<header class="header">
+  <div class="header__container">
+    <a href="#" class="header__base-link">
+      <div class="header__logo-container">
+        <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        <svg width="100%" height="100%" viewBox="0 0 100 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+          <path id="path29" d="M2.079,33.814c0,-9.934 3.451,-18.822 10.405,-26.716c2.509,-2.823 4.6,-4.287 6.012,-4.287c0.471,0 0.941,0.157 1.412,0.47c0.313,0.314 0.627,0.785 0.627,1.255c0,0.784 -0.941,1.882 -2.666,3.66c-7.268,6.953 -10.927,15.475 -10.927,25.775c0,11.397 3.816,20.547 11.24,27.657c1.569,1.412 2.196,2.51 2.196,3.451c0,0.47 -0.313,0.941 -0.627,1.411c-0.314,0.314 -0.941,0.628 -1.412,0.628c-1.725,0 -4.13,-2.039 -7.267,-6.013c-6.117,-7.528 -8.993,-16.521 -8.993,-27.291Z"/>
+          <path id="path31" d="M97.86,36.324c0,9.933 -3.45,18.821 -10.404,26.716c-2.51,2.823 -4.601,4.287 -6.012,4.287c-0.471,0 -0.941,-0.157 -1.412,-0.471c-0.314,-0.313 -0.627,-0.941 -0.627,-1.411c0,-0.785 0.941,-1.883 2.666,-3.451c7.267,-6.954 10.927,-15.475 10.927,-25.775c0,-11.398 -3.817,-20.547 -11.241,-27.657c-1.568,-1.412 -2.196,-2.51 -2.196,-3.451c0,-0.47 0.314,-0.941 0.628,-1.411c0.314,-0.314 0.941,-0.628 1.411,-0.628c1.569,0 4.131,2.039 7.268,6.013c5.803,7.528 8.992,16.521 8.992,27.239Z"/>
+          <path id="path37" d="M71.918,65.149l-43.828,0c-1.57,0 -2.747,-1.178 -2.747,-2.748c0,-1.57 1.177,-2.747 2.747,-2.747l43.828,0c1.57,0 2.748,1.177 2.748,2.747c-0.393,1.57 -1.178,2.748 -2.748,2.748Z"/>
+          <path d="M40.664,8.196c0,0 3.659,2.509 3.659,7.11c0,7.895 -10.77,16.574 -10.77,24.782c0,8.835 6.797,14.534 13.28,16.26c0.941,0.156 1.255,-0.785 0.157,-1.098c-2.667,-0.628 -5.542,-4.131 -5.542,-9.463c0,-5.072 4.914,-6.954 6.797,-9.307c2.039,-2.509 1.568,-5.698 0.313,-6.639c-1.255,-0.942 -0.313,-2.196 1.726,-0.628c2.039,1.412 3.816,4.287 3.136,6.797c-0.784,3.294 0.314,5.228 2.039,5.542c1.726,0.313 3.66,-0.628 3.451,-2.196c-0.209,-1.569 -1.098,-3.294 -0.627,-3.294c1.254,0 3.816,2.98 3.816,7.895c0,4.914 -3.973,8.208 -5.228,9.463c-0.784,0.784 0.157,1.725 1.255,1.255c0.47,-0.157 1.568,-0.785 2.196,-1.255c3.137,-2.196 8.051,-6.797 8.051,-15.162c0,-8.836 -3.294,-12.809 -6.797,-16.103c-3.45,-3.294 -4.287,-2.509 -3.293,-0.784c2.823,4.914 1.098,6.64 -0.941,6.64c-2.51,0 -2.51,-5.542 -3.66,-9.777c-2.039,-9.463 -10.77,-11.084 -12.339,-11.241c-1.15,-0.523 -2.614,0.419 -0.679,1.203Z"/></svg>
+      </div>
+      <h1 class="header__title">Camper News</h1>
+    </a>
+  </div>
+</header>
+
+<div class="grid">
+  <div class="grid__sizer"></div>
+  <div class="gutter__sizer"></div>
+  <div id="articles"></div>
+</div>
+
+<script id="news-item" type="text/x-handlebars-template">
+  <article class="grid__item news {{color}} {{class}}" data-url="{{link}}">
+		<div class="grid__wrapper">
+			<a href="{{link}}" class="news__url" target="_blank">
+				<h1 class="news__title">{{headline}}</h1>
+				{{#if metaDescription }}
+				<hr />
+				<p class="news__description">{{truncate metaDescription 200}}</p>
+				{{/if}}
+			</a>
+			<div class="news__meta-author-container">
+				<a class="news__meta-author-link" href="http://www.freecodecamp.com/{{author.username}}" target="_blank">
+					<img class="news__meta-author-avatar" src="{{author.picture}}" alt="{{author.username}} avatar" />
+					<span class="news__meta-author-name">@{{author.username}}</span>
+				</a>
+			</div>
+			<div class="news__story-meta-container">
+				<div class="news__meta">
+					<p class="news__meta-date">{{formatDate timePosted }}</p>
+					<div class="news__meta_upvote-container">
+						<span class="news__meta-upvote-count">
+							<i class="ion-arrow-graph-up-right"></i>
+							{{rank}}
+							<p class="news__meta-upvote-label">upvotes</p>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+  </article>
+</script>
