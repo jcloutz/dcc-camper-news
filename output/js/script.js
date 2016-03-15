@@ -14,7 +14,7 @@ Handlebars.registerHelper('truncate', function (str, len) {
     }
   }
 
-  return str.substr(0, index) + '...';
+  return str.length > 0 ? str.substr(0, index) + '...' : '';
 });
 
 Handlebars.registerHelper('formatDate', function (timestamp) {
