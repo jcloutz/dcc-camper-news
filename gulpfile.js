@@ -91,6 +91,8 @@ gulp.task('default', ['html', 'css', 'scripts'], function() {
 
 });
 
+gulp.task('build', ['html', 'css', 'scripts']);
+
 gulp.task('deploy', function() {
   run('git push origin :gh-pages').exec()
     .on('error', function() {}); // catch error
